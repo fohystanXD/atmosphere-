@@ -1,0 +1,9 @@
+id = "atmosphere"
+name = "Atmosphere"
+version = "0.1.0"
+description = "Subtle colour moods for the Nether, the End, caves, mountains and the ground you look at."
+authors = ["CGRLabs"]
+api = "0.1"
+side = "client"
+capabilities = ["game-read", "render"]
+experimental = ["render"]
