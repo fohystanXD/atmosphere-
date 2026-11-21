@@ -1,0 +1,23 @@
+name: Build .hmod
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --target wasm32-unknown-unknown
+          rustup default 1.95.0
+      - name: Install cargo-horizon-mod
+        run: cargo install --git https://github.com/Vasysik/horizon-android --rev 80700a6f26afe53a368032d8b28bd364f7c3e7e4 cargo-horizon-mod --locked
+      - name: Build the mod
+        run: cargo horizon-mod build
+      - name: Keep the .hmod
+        uses: actions/upload-artifact@v4
+        with:
+          name: atmosphere-hmod
+          path: target/horizon-mod/*.hmod
+          
