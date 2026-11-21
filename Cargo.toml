@@ -1,0 +1,20 @@
+[package]
+name = "atmosphere"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+description = "Subtle colour moods by dimension, depth and ground."
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+horizon-mod-sdk = { git = "https://github.com/WandersTest3/Pojarush_Test3", rev = "2a0933feec3b46942e4c9317c10a668b770fe3fa" }
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
+
+[workspace]
